@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Company Search AI</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+
+    <!-- Template styles -->
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-Fabric">
+    <div id="container" class="container">
+        <header class="header">
+            <h1 class="title">Company Search AI</h1>
+            <p class="subtitle">Find companies that match your criteria using AI</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="form-group">
+                    <label for="searchCriteria" class="form-label">Search Criteria</label>
+                    <textarea 
+                        id="searchCriteria" 
+                        class="form-textarea" 
+                        placeholder="Describe the type of companies you're looking for (e.g., 'tech startups in California', 'manufacturing companies with 100+ employees', 'sustainable energy companies')"
+                        rows="4"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="companyCount" class="form-label">Number of Companies to Add</label>
+                    <input 
+                        type="number" 
+                        id="companyCount" 
+                        class="form-input" 
+                        min="1" 
+                        max="50" 
+                        value="10"
+                        placeholder="Enter number (1-50)"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="apiKey" class="form-label">AI API Key (Optional)</label>
+                    <input 
+                        type="password" 
+                        id="apiKey" 
+                        class="form-input" 
+                        placeholder="Enter your API key or leave blank to use default"
+                    >
+                    <small class="form-help">If you have your own API key, enter it here. Otherwise, the add-in will use a default configuration.</small>
+                </div>
+
+                <button id="searchButton" class="btn btn-primary">
+                    <span class="btn-text">Search Companies</span>
+                    <span class="btn-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        Searching...
+                    </span>
+                </button>
+            </section>
+
+            <!-- Status Section -->
+            <section id="statusSection" class="status-section" style="display: none;">
+                <div id="statusMessage" class="status-message"></div>
+                <div id="progressBar" class="progress-bar" style="display: none;">
+                    <div class="progress-fill"></div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                <h3 class="results-title">Found Companies</h3>
+                <div id="resultsList" class="results-list"></div>
+                <div class="results-actions">
+                    <button id="addToExcelButton" class="btn btn-success">
+                        Add to Excel Sheet
+                    </button>
+                    <button id="clearResultsButton" class="btn btn-secondary">
+                        Clear Results
+                    </button>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section id="errorSection" class="error-section" style="display: none;">
+                <div class="error-message">
+                    <span class="error-icon">⚠️</span>
+                    <span id="errorText"></span>
+                </div>
+                <button id="dismissErrorButton" class="btn btn-secondary">Dismiss</button>
+            </section>
+        </main>
+
+        <!-- Instructions -->
+        <section class="instructions">
+            <h3>How to Use</h3>
+            <ol>
+                <li>Make sure your Excel sheet has company names in the first column (A)</li>
+                <li>Describe the type of companies you want to find</li>
+                <li>Specify how many companies to add</li>
+                <li>Click "Search Companies" to find matches</li>
+                <li>Review the results and click "Add to Excel Sheet"</li>
+            </ol>
+            <p><strong>Note:</strong> New companies will be highlighted in green and duplicates will be automatically filtered out.</p>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 

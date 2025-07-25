@@ -1,0 +1,37 @@
+{
+  "name": "company-search-ai-excel-addin",
+  "version": "1.0.0",
+  "description": "A lightweight Excel add-in that uses AI to search for companies based on criteria",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -c-1 --cors",
+    "dev": "npx http-server -p 3000 -c-1 --cors -o",
+    "build": "echo 'No build process required for this add-in'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "excel",
+    "add-in",
+    "office",
+    "ai",
+    "company-search",
+    "openai",
+    "javascript"
+  ],
+  "author": "Company Search AI",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/company-search-ai-excel-addin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/company-search-ai-excel-addin/issues"
+  },
+  "homepage": "https://github.com/yourusername/company-search-ai-excel-addin#readme"
+} 
